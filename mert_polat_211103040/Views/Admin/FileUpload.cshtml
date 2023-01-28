@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "FileUpload";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>FileUpload</h2>
+
+@using (Html.BeginForm(null, null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <br />
+    <button type="submit"> Dosya Yükleme </button>
+}
+@ViewBag.Mesaj

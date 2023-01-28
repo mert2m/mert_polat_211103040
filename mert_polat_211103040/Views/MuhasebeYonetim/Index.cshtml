@@ -1,0 +1,46 @@
+﻿@model IEnumerable<mert_polat_211103040.DAL.muhasebe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.içerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iletişim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.içerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iletişim)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.muhasebeid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.muhasebeid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.muhasebeid })
+        </td>
+    </tr>
+}
+
+</table>

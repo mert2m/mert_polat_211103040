@@ -1,0 +1,49 @@
+﻿@model mert_polat_211103040.DAL.muhasebe
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>muhasebe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.içerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.içerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iletişim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iletişim)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

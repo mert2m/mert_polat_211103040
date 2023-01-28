@@ -1,0 +1,761 @@
+﻿@using mert_polat_211103040.DAL
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    dbmodel db = new dbmodel();
+    var iletişim = db.iletişim.FirstOrDefault();
+    var avukatlar = db.avukatlar.FirstOrDefault();
+    var çalışmaAlanlari = db.çalışmaAlanlari.OrderBy(h=>h.sira).ToList();
+    var muhasebe = db.muhasebe.OrderBy(h => h.iletişim).ToList();
+    var hakkimizda = db.hakkimizda.FirstOrDefault();
+    var içerik = db.içerik.FirstOrDefault();
+
+
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="author" content="Anwaltskanzlei Orhan&amp;Partner">
+    <meta name="description" content="Internationale Anwaltskanzlei Orhan&amp;Partner mit Sitz in İzmir und Standorten in İstanbul, Ankara und Antalya.">
+    <meta name="keywords" content="Anwaltskanzlei,İzmir, İstanbul,Ankara,Antalya">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="http://orhan-partner.de/">
+    <meta property="og:title" content="Anwaltskanzlei Orhan&amp;Partner">
+    <meta property="og:image" content="de.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Orhan&amp;Partner">
+    <title>Orhan&amp;Partner Avukatlık Bürosu</title>
+
+    <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+    <link href="~/favicon.ico" rel="shortcut icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-utilities.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+
+    <!-- Libraries CSS Files -->
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/animate-css/animate.min.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet File -->
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!-- =======================================================
+      Theme Name: Imperial
+      Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+      Author: BootstrapMade.com
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+
+
+    <div id="preloader"></div>
+
+    <!--==========================
+    Hero Section
+    ============================-->
+    <section id="hero">
+        <div class="hero-container">
+            <div class="wow fadeIn">
+                <div class="hero-logo">
+                    <img class="" src="~/img/logo.jpg" alt="Imperial">
+                </div>
+
+                <h1>Avukatlık Bürosu</h1>
+                <h2><span class="rotating">İzmir, İstanbul, Ankara, Antalya</span></h2>
+
+                <div class="actions">
+                    <a href="http://orhan-partner.de/" class="btn-services">Deutsch</a>
+                    <a href="http://orhan-partner.de/indexEn.html" class="btn-services">English</a>
+                    <a @*href="http://orhan-partner.de/indexTr.html"*@ class="btn-get-started">Türkçe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+    Header Section
+    ============================-->
+    <header id="header">
+        <div class="container">
+
+            <div id="logo" class="pull-left">
+                <a href="#hero"><img src="~/img/logo.jpg" alt="" title="" /></img></a>
+                <!-- Uncomment below if you prefer to use a text image -->
+                <!--<h1><a href="#hero">Header 1</a></h1>-->
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="#hero">BAŞLANGIÇ</a></li>
+                    <li><a href="#about">HAKKIMIZDA</a></li>
+                    <li><a href="#services">ÇALIŞMA ALANLARI</a></li>
+                    <li class="menu-has-children">
+                        <a href="#ismailorhan">AVUKATLAR</a>
+                        <ul>
+                            @foreach (var item in db.avukatlar)
+                            {
+                                <li><a href="#ismailorhan">@item.isim</a></li>
+                            }
+
+                           
+                        </ul>
+                    </li>
+                    <li><a href="#portfolio">MUHASEBE</a></li>
+                    <li><a href="#team">KARİYER</a></li>
+                    <li><a href="#contact">İLETİŞİM</a></li>
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+        </div>
+    </header>
+    <!-- #header -->
+    <!--==========================
+    About Section
+    ============================-->
+    <section id="about">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">HAKKIMIZDA</h3>
+                    <div class="section-title-divider"></div>
+                    <p class="section-description">@hakkimizda.içerik</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 about-img">
+    <img src="~/img/about-img.jpg" alt="">
+    </div>
+            </section>
+    <section id="subscribe">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="subscribe-title">ORHAN & PARTNER </br> AVUKATLIK BÜROSU</h3>
+                    <p class="subscribe-text"></p>
+                </div>
+                <div class="col-md-4 subscribe-btn-container">
+                    <a class="subscribe-btn" href="mailto:info@orhan-partner.net">info@orhan-partner.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==========================
+    Services Section
+    ============================-->
+    <section id="services">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">ÇALIŞMA ALANLARI</h3>
+                    <div class="section-title-divider"></div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                @foreach (var item in db.çalışmaAlanlari.ToList())
+                {<div class="col-md-4 service-item">
+                        <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+
+
+                        <h4 class="service-title"><a href="">@item.başlık</a></h4>
+                        <p class="service-description">
+
+                            <ul>
+                                @item.içerik
+                                @*<li>Şirketlerin birleşmesi ve satın alınması  </li>
+                        <li>Yatırımlar	  </li>
+                        <li>Şube ve iştiraklerin kurulması</li>
+                        <li>Kurum organları yasası </li>
+                        <li>Şirket ve hissedar süreci </li>
+                        <li>Yabancı Sermayenin Teşvik Kanunu </li>
+                        <li>Ortak girişimler, franchise ve lisans sözleşmeleri </li>*@
+                            </ul>
+                        </p>
+                        
+                
+                
+                </div>
+                }
+                        @*<h4 class="service-title"><a href="">Şirketlerin kuruluşu ve dönüşümü </a></h4>
+                <p class="service-description">
+
+                    <ul>
+                        <li>Şirketlerin birleşmesi ve satın alınması  </li>
+                        <li>Yatırımlar	  </li>
+                        <li>Şube ve iştiraklerin kurulması</li>
+                        <li>Kurum organları yasası </li>
+                        <li>Şirket ve hissedar süreci </li>
+                        <li>Yabancı Sermayenin Teşvik Kanunu </li>
+                        <li>Ortak girişimler, franchise ve lisans sözleşmeleri </li>
+                    </ul>
+                </p>*@
+                        @*</div>
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Sigorta hukuku </a></h4>
+                                <p class="service-description">
+                                    </br><ul>
+                <li>Sigorta tazminat taleplerinin çözümü ve tazminat talepleri </li>
+                <li>Sigorta şirketlerinin reasürans ve teminat taleplerinde temsili </li>
+                <li>Sigorta dağıtımı alanında diğer sigorta şirketleri veya bankalarla işbirliği anlaşmaları </li>
+                <li>Yeni sigorta ürünlerinin yasal desteği</li>
+                </ul>
+                                </p>
+                            </div>
+
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Bankacılık ve Menkul Kıymetler Hukuku </a></h4>
+                                <p class="service-description">
+                                    </br><li>Kredi işlemleri ve kredi güvenliği</li>
+                                    <li>Banka garantileri ve akreditif</li>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Vergi ve Gümrük Kanunu </a></h4>
+                                <p class="service-description">
+                                    </br><li>Vergi tespiti</li>
+                                    <li>Vergi danışmanlığı ve şirketlerin her durumdaki mali mahkeme işlemlerinde temsil edilmesi </li>
+                                    <li>Ulusal ve uluslararası dış ticaret ve gümrük meseleleri</li>
+                                </p>
+                            </div>
+
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Taşıma hukuku</a></h4>
+                                <p class="service-description">
+                                    </br><li>Ulusal ve uluslararası ulaştırma kanunu </li>
+                                    <li>Ulaştırma hasarı ve sorumluluk sorunları</li>
+                                    <li>Taşıma sigortası</li>
+                                </p>
+                            </div>
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Rekabet ve Marka Kanunu </a></h4>
+                                <p class="service-description">
+                                    <li>Marka başvurusu </li>
+                                    <li>Araştırma </li>
+                                    <li>Lisans anlaşmalarının hazırlanması ve tescili </li>
+                                    <li>Marka satış</li>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">İş Hukuku</a></h4>
+                                <p class="service-description">
+                                    </br><li>İstihdam ve servis sözleşmeleri</li>
+                                    <li>İşten çıkarılma, çalışma izni ve oturma sorularına karşı koruma</li>
+                                    <li>Uluslararası Çalışma ve Sosyal Hukukt</li>
+                                </p>
+                            </div>
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Gayrimenkul hukuku </a></h4>
+                                <p class="service-description">
+                                    </br><li>Gayrimenkul yatırımları ve ticari gayrimenkul değerlemesi</li>
+                                    <li>Gayrimenkul alım satımı</li>
+                                </p>
+                            </div>
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Aile hukuku  </a></h4>
+                                <p class="service-description">
+                                    </br><li>Vasiyetname ve emlak yönetimi </li>
+                                    <li>Evlilik sözleşmelerinin tasarımı </li>
+                                    <li>Boşanma ve velayet işlemleri</li>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Tıbbi sorumluluk ve hastane kanunu  </a></h4>
+                                <p class="service-description">
+                                    <li>Tıp mesleği ve sorumluluk kanunu</li>
+                                    <li>Hastane sektöründe dış kaynak kullanımı</li>
+                                </p>
+                            </div>
+                            <div class="col-md-4 service-item">
+                                <div class="service-icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="service-title"><a href="">Özelleştirme </a></h4>
+
+                            </div>
+                        </div>*@
+                    </div>
+</section>
+
+    <!--==========================
+    Subscrbe Section
+    ============================-->
+    <section id="subscribe">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="subscribe-title">ORHAN & PARTNER </br> AVUKATLIK BÜROSU</h3>
+                    <p class="subscribe-text"></p>
+                </div>
+                <div class="col-md-4 subscribe-btn-container">
+                    <a class="subscribe-btn" href="mailto:info@orhan-partner.net">info@orhan-partner.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--==========================
+    Testimonials Section
+    ============================-->
+    <section id="testimonials">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">AVUKATLAR</h3>
+                    <div class="section-title-divider"></div>
+
+                </div>
+            </div>
+
+            <div class="row" id="ismailorhan">
+                <div class="col-md-3">
+                    <div class="profile">
+                        <div class="pic"><img src="~/img/client-1.jpg" alt=""></div>
+                        <h4>İsmail Orhan </br> Avukat - Marka Vekili </h4 >
+
+                        <a class="LI-simple-link" href='https://tr.linkedin.com/in/ismail-orhan-193983189?trk=profile-badge'></a></div-->
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="quote">
+                        
+                        <b><img src="~/img/quote_sign_left.png" alt=""></b> 1965 doğumlu. 1996'dan beri İzmir Barosu Üyesi. 1997'den bu yana Marka Vekilliği. <small>
+                          <img src="~/img/quote_sign_right.png" alt="">
+
+                            </p>
+                        </small>
+                        <p>
+
+
+                            <b>Eğitim</b>
+                            <li>İstanbul Üniversitesi, Hukuk Fakültesi, LLB(1991)</li>
+                            <li>Köln Üniversitesi, Hukuk Fakültesi(1986 - 1987)</li>
+                            <li>Schiller Lisesi Köln, Abitur(1986)</li>
+                            </br>
+                            <b>Tecrübe</b></br></br>
+                            <li>Orhan & Partner Avukatlık Bürosu, Avukat - Ortak(1999'dan beri)</li>
+                            <li>O&C Uluslararası Hukuk Bürosu, Avukat (1996 - 1999)</li>
+                            <li>Serbest avukatlık, Balıkesir (1993 - 1996)</li>
+
+                            </br>
+                            <b>Dil</b></br></br>
+                            <li>Türkçe</li>
+                            <li>İngilizce</li>
+                            <li>Almanca</li>
+                            </br>
+                            <b>Üyelikler</b></br></br>
+                            <li>İzmir Barolar Birliği</li>
+                            <li>Alman Türk Ticaret Odası İstanbul</li>
+                            <li>Amerikan Türk Kulübü İzmir</li>
+                            <li>PEOPIL Pan-Avrupa kişisel yaralanma için avukatların organizasyonu</li>
+                            <li>IDEK Avrupa Trafik Hukuku Enstitüsü</li>
+                            <li>DACH Avrupa Barosu</li>
+                            <li>GRUR e.V. Alman Fikri Mülkiyet ve Telif Hakkı Derneği e.V.</li>
+                            </br>
+                            </br>
+                            <b>Email</b></br></br>
+                            <li>iorhan@orhan-partner.net</li>
+                            </br>
+                            <b>Vcard</b></br></br>
+                            <img src="~/img/iorhan.png" alt="">
+                            </br>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="seldaorhan">
+                <div class="col-md-9">
+                    <div class="quote">
+                        <b><img src="~/img/quote_sign_left.png" alt=""></b> 1975 doğumlu. 1997'den beri İzmir Barosu Üyesi. <small><img src="~/img/quote_sign_right.png" alt=""></small>
+
+                        <p>
+                            </br>
+                            <b>Eğitim</b>
+                            <li>İzmir 9 Eylül Üniversitesi, Hukuk Fakültesi, LLB (1996)</li>
+                            <li>Gazi Lisesi, (1992)</li>
+                            </br>
+                            <b>Tecrübe</b></br></br>
+                            <li>Orhan & Partner Avukatlık Bürosu, Avukat - Ortak (2001'den beri)</li>
+                            <li> Hilmi Güler Hukuk Bürosu, Avukat (1997 - 2000)</li>
+
+                            </br>
+                            <b>Dil</b></br></br>
+                            <li>Türkçe</li>
+                            <li>İngilizce</li>
+                            </br>
+                            <b>Üyelikler</b></br></br>
+                            <li>İzmir Barolar Birliği</li>
+                            <li>Alman Türk Ticaret Odası İstanbul</li>
+                            <li>Amerikan Türk Kulübü İzmir</li>
+                            </br>
+                            </br>
+                            <b>Email</b></br></br>
+
+                            <li>sorhan@orhan-partner.net</li>
+                            </br>
+                            <b>Vcard</b></br></br>
+
+
+                            <img src="~/img/sorhan.png" alt="">
+
+
+
+
+                            </br>
+                            </br>
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="profile">
+                        <div class="pic"><img src="~/img/client-2.jpg" alt=""></div>
+                        <h4>Selda Orhan </br>Avukat</h4>
+
+                        <!--div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="selda-orhan-8768b5188"><a class="LI-simple-link" href='https://tr.linkedin.com/in/selda-orhan-8768b5188?trk=profile-badge'>selda-orhan-8768b5188</a></div-->
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <section id="subscribe">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="subscribe-title">ORHAN & PARTNER </br> AVUKATLIK BÜROSU</h3>
+                    <p class="subscribe-text"></p>
+                </div>
+                <div class="col-md-4 subscribe-btn-container">
+                    <a class="subscribe-btn" href="mailto:info@orhan-partner.net">info@orhan-partner.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--==========================
+    Porfolio Section
+    ============================-->
+    <section id="portfolio">
+        <div class="container wow fadeInUp">
+            <div class="flex-row">
+                <div class="col-md-12">
+                    <h3 class="section-title">MUHASEBE</h3>
+                    <div class="section-title-divider"></div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach (var item in db.muhasebe)
+                {
+                    <div class="col-md-3">
+                        <a class="portfolio-item" style="background-image: url(/img/portfolio-2TR.jpg);">
+                            <div class="details">
+
+                                <h4>@item.ad</h4>
+                                <p>@item.içerik</p>
+                            </div>
+                        </a>
+                    </div>
+
+                }
+                @*<div class="col-md-3">
+            <a class="portfolio-item" style="background-image: url(/img/portfolio-2TR.jpg);">
+                <div class="details">
+
+                    <h4>Ümit Kaçar</h4>
+                    <p>Ümit Kaçar 1970 yılında İstanbul'da doğdu. 1988 yılında İstanbul'da Kabataş Buben Lisesi'nden mezun oldu. İlk olarak 1992'de Adana'da Çukurova Üniversitesi'nden İşletme ve 1996'da İzmir'de Dokuz Eylül Üniversitesi'nden Finans bölümünden mezun oldu. 1996 - 2004 yılları arasında Uluslararası Bağımsız Şirket Denetim, Mali Rapor, Tam Vergilendirme ve Yatırım ve Promosyon Uygulamaları alanlarında çalıştı. 2004 yılından beri vergi ve denetim şirketi Danış Denetim Danışmanlık Mali Müşavirlik Ltd.Sti. işletmektedir. Uluslararası sınav standartları ile ilgili mesleki tecrübeye sahiptir.</p>
+                </div>
+            </a>
+        </div>*@
+
+                @*<div class="col-md-3">
+                    <a class="portfolio-item" style="background-image: url(/img/portfolio-2TRTR.jpg);">
+                        <div class="details">
+                            <h4>Hakan Şarap</h4>
+                            <p>Hakan Şarap, 1962 yılında İzmir'de doğdu. 1979 yılında İzmir’deki Atatürk Lisesi 'nden mezun olduktan sonra İzmir’deki Dokuz Eylül Üniversitesi’nde işletme ve finans işlerine katılmış ve 1984 yılında çalışmalarını tamamlamıştır. 1987-1994 yılları arasında özel sektörde Coca-Cola İzmir'de, Altınyunus Otel'de Marmaris'te ve diğer firmalarda iç muhasebeci ve vergi danışmanlığı yaptı. 1995 - 2007 yılları arasında bağımsız muhasebeci ve vergi danışmanlığı yaptı. 2008'den beri serbest meslek sahibi bir yeminli vergi danışmanı olarak çalışıyor. 2012 yılında lisansı Sermaye Piyasası Kurumu'ndan bağımsız denetçi olarak aldı.</p>
+                        </div>
+                    </a>
+                </div>
+
+
+
+            </div>*@
+        </div>
+    </section>
+
+
+
+
+    <section id="subscribe">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="subscribe-title">ORHAN & PARTNER </br> AVUKATLIK BÜROSU</h3>
+                    <p class="subscribe-text"></p>
+                </div>
+                <div class="col-md-4 subscribe-btn-container">
+                    <a class="subscribe-btn" href="mailto:info@orhan-partner.net">info@orhan-partner.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==========================
+    Team Section
+    ============================-->
+    <section id="team">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">KARİYER</h3>
+                    <div class="section-title-divider"></div>
+
+
+                    <b style="background-color:yellow;">[05.08.2021] İzmir’deki Avukatlık Büromuza aşağıda belirtilen niteliklerde tam zamanlı Bayan yönetici asistan aranmaktadır.</b>
+                    </br></br><b>Gereksinimler</b>
+                    <li>Üniversitelerinin Almanca Öğretmenliği veya Mütercim Tercümanlık Bölümünden mezun veya Almanya’da 3 yıllık (Rechtsanwaltsfachangestellte) meslek eğitimini tamamlamış</li>
+                    <li>Sigara kullanmayan (tercihen Anadil seviyesinde Almancanın yanında İngilizce diline de hakim) adayların, fotoğraflı CV  ile elektronik postayla başvurmaları rica olunur.</li>
+
+                    </br>
+                    <b style="background-color:yellow;"> Ekibimizi güçlendirmek için nitelikli avukatlar ve hukuk stajyerleriyle ilgileniyoruz. Lütfen başvurularınızı <b>info@orhan-partner.net</b> adresine e-posta ile gönderiniz.</b>
+
+
+                </div>
+            </div>
+
+            </br><b>Gereksinimler</b>
+            <li>Nitelikli bir avukat olarak yasal yeterlilik</li>
+            <li>Disiplinlerarası, analitik düşünme </li>
+            <li>Dinamik bir hukuk bürosunda ekip odaklı işbirliğine istekli olmak</li>
+            <li>Almanca ve İngilizce sözlü ve yazılı yeterlilik</li>
+            <li>Motivasyon</li>
+            </br>Orhan & Partner Avukatlık Bürosu
+
+            </br>Adalet Mah.Novus Tower No: 4 K.25 D.251
+
+            </br>TR - 35530 Bayraklı – İZMİR E-Mail: info orhan-partner.net
+            </br><img src="~/img/de.png" alt="" title="" /></img>
+        </div>
+        </div>
+    </section>
+    <section id="subscribe">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="subscribe-title">ORHAN & PARTNER </br> AVUKATLIK BÜROSU</h3>
+                    <p class="subscribe-text"></p>
+                </div>
+                <div class="col-md-4 subscribe-btn-container">
+                    <a class="subscribe-btn" href="mailto:info@orhan-partner.net">info@orhan-partner.net</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==========================
+    Contact Section
+    ============================-->
+    <section id="contact">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">İLETİŞİM</h3>
+
+                    <div class="section-title-divider"></div>
+                </div>
+
+                <div class="row">
+                    <p align="center"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.5841650954676!2d27.175718565935554!3d38.45107298405722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b962a8b899b2a3%3A0xf53e30e0967f6c90!2sNovus+Tower!5e0!3m2!1sen!2str!4v1560455862139!5m2!1sen!2str" width="600" height="150" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+                    </br>
+
+                    <div class="col-md-3 col-md-push-2">
+                        <div class="info">
+                            <div>
+                                <i class="fa fa-map-marker"></i>
+                                <p>@iletişim.adres</p>
+                            </div>
+
+                            <div>
+                                <i class="fa fa-envelope"></i>
+                                <p>@iletişim.mail</p>
+                            </div>
+
+                            <div>
+                                <i class="fa fa-phone"></i>
+                                <p>@iletişim.telefon pbx</p>
+                            </div>
+
+                            <div>
+                                <i class="fa fa-fax"></i>
+                                <p> @iletişim.fax</p>
+                            </div>
+                            <div>
+                                <i class="fa fa-phone"></i>
+                                <p>@iletişim.mobil</p>
+                            </div>
+
+                            <img src="~/img/iorhan.png" alt="">
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-md-push-2">
+                        <form action="https://formspree.io/huseyin.cakir35@gmail.com" method="POST" />
+
+                        <div class="row">
+
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Mail">
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="button button-a button-big button-rouded">Gönder</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+      Footer
+    ============================-->
+    <footer id="footer">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12" align="center">
+                    <img src="~/img/logobot.jpg" alt="">
+
+                    <br />
+
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-link btn-lg-6" data-toggle="modal" data-target="#myModal"> &copy; Copyright 2019 Orhan & Partner</strong></button>
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <embed  href="~/Copyright.pdf">
+                                          <frameborder="0" width="100%" height="450px">
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <br />
+                        &copy; Hakları Mertte saklıdır <strong>Imperial Theme</strong>. All Rights Reserved from Mert
+                    </div>
+                    <div class="credits">
+                        <!--
+                          All the links in the footer should remain intact.
+                          You can delete the links only if you purchased the pro version.
+                          Licensing information: https://bootstrapmade.com/license/
+                          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+                        -->
+                        Designed by <a href="https://bootstrapmade.com/">Mertechnologies</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Required JavaScript Libraries -->
+    <script src="~/lib/easing/easing.js"></script>
+    <script src="~/lib/stickyjs/sticky.js"></script>
+    <script src="~/lib/wow/wow.min.js"></script>
+    <script src="~/lib/morphext/morphext.min.js"></script>
+    <script src="~/lib/superfish/superfish.min.js"></script>
+    <script src="~/lib/superfish/hoverIntent.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="~/contactform/contactform.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
+
+
+</body>
+
+</html>

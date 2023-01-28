@@ -1,0 +1,35 @@
+﻿@model mert_polat_211103040.DAL.çalışmaAlanlari
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>çalışmaAlanlari</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.başlık)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.başlık)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.içerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.içerik)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.calismaid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

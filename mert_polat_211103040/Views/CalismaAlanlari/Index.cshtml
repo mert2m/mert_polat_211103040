@@ -1,0 +1,40 @@
+﻿@model IEnumerable<mert_polat_211103040.DAL.çalışmaAlanlari>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.başlık)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.içerik)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.başlık)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.içerik)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.calismaid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.calismaid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.calismaid })
+        </td>
+    </tr>
+}
+
+</table>
